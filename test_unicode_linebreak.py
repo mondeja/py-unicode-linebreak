@@ -1,9 +1,17 @@
 import unittest
 
-from py_unicode_linebreak import linebreaks
+from unicode_linebreak import linebreaks
 
 class TestPyUnicodeLinebreak(unittest.TestCase):
-    def test_linebreaks(self):
+    def test_simple(self):
+        string = 'a b\nc\r\nd e\rf end'
+        expected_result = [
+            (2, False), (4, True), (7, True), (9, False),
+            (11, True), (13, False), (16, True)
+        ]
+        self.assertListEqual(linebreaks(string), expected_result)
+
+    def test_scriptio_continua_linebreaks(self):
         string = (
             '支持常见的温度传感器（例如，常见的热敏电阻、'
             'AD595、AD597、AD849x、PT100、PT1000、'
