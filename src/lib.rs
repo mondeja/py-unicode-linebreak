@@ -4,7 +4,6 @@ use unicode_linebreak::{linebreaks as rust_linebreaks, BreakOpportunity::{Mandat
 #[pyfunction]
 fn linebreaks(text: &str) -> PyResult<Vec<(usize, bool)>> {
     let mut vec = Vec::new();
-    
     for val in rust_linebreaks(text) {
         vec.push((val.0, val.1 == Mandatory));
     }

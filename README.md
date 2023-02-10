@@ -1,4 +1,4 @@
-# py-unicode-linebreaks
+# py-unicode-linebreak
 
 Python bindings for the Rust crate [unicode-linebreak](https://crates.io/crates/unicode-linebreak).
 
