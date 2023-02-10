@@ -11,8 +11,8 @@ fn linebreaks(text: &str) -> PyResult<Vec<(usize, bool)>> {
     Ok(vec)
 }
 
-/// A Python module implemented in Rust.
 #[pymodule]
+#[pyo3(name = "unicode_linebreak")]
 fn py_unicode_linebreak(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(linebreaks, m)?)?;
     Ok(())
