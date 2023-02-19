@@ -1,6 +1,6 @@
 # py-unicode-linebreak
 
-Python bindings for the Rust crate [unicode-linebreak](https://crates.io/crates/unicode-linebreak).
+Python bindings for the Rust crate [unicode-linebreak].
 
 ## Installation
 
@@ -18,10 +18,26 @@ expected_result = [
     (2, False), (4, True), (7, True), (9, False),
     (11, True), (13, False), (16, True)
 ]
-assert linebreaks(string) == expected_result
+assert list(linebreaks(string)) == expected_result
 ```
 
-Returns a list of tuples with the index of the linebreak and a boolean indicating whether the linebreak is a mandatory break.
+Returns an iterator which iterates over tuples with the
+binary character index of the linebreak and a boolean
+indicating whether the linebreak is a mandatory break.
+
+> Note that the binary character index is not the same as the
+> readable character index, but the binary position.
+> See the Rust method on strings [`char_indices()`].
+
+Also includes two variables to write a more readable version
+of your code:
+
+```python
+from unicode_linebreak import Allowed, Mandatory
+
+assert Allowed is False
+assert Mandatory is True
+```
 
 ## Contribute
 
@@ -31,3 +47,6 @@ source venv/bin/activate
 pip install -r dev-requirements.txt
 maturin develop && python -m unittest
 ```
+
+[unicode-linebreak]: https://crates.io/crates/unicode-linebreak
+[`char_indices()`]: https://doc.rust-lang.org/std/primitive.str.html#method.char_indices
