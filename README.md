@@ -22,11 +22,11 @@ assert list(linebreaks(string)) == expected_result
 ```
 
 Returns an iterator which iterates over tuples with the
-binary character index of the linebreak and a boolean
+binary character position of the linebreak and a boolean
 indicating whether the linebreak is a mandatory break.
 
-> Note that the binary character index is not the same as the
-> readable character index, but the binary position.
+> Note that the binary character position is not the same
+> as the readable character index, but the binary position.
 > See the Rust method on strings [`char_indices()`].
 
 Also includes two variables to write a more readable version
