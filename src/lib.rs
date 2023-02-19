@@ -25,7 +25,7 @@ impl Linebreaks {
 
 #[pyfunction]
 fn linebreaks(text: &str) -> PyResult<Linebreaks> {
-    let linebreaker = Linebreaks {
+    Ok(Linebreaks {
         inner: rust_linebreaks(text)
             .map(|(i, opp)| {
                 match opp {
@@ -35,9 +35,7 @@ fn linebreaks(text: &str) -> PyResult<Linebreaks> {
             })
             .collect::<Vec<(usize, bool)>>()
             .into_iter(),
-
-    };
-    Ok(linebreaker)
+    })
 }
 
 #[pymodule]
